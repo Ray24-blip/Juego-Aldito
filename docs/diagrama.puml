@@ -1,0 +1,19 @@
+@startuml Pelota
+
+
+class Usuario
+class Pelota{
+    +Saltar()
+    +Desplazar()
+}
+class Juego{
+-Pelota pelotaRoja    
+}
+class Escenario
+class Plataforma
+
+Juego *-- "1"Escenario
+Escenario *-- "1"Pelota
+Usuario o-- "1"Pelota
+Escenario o-- "*"Plataforma
+@enduml
