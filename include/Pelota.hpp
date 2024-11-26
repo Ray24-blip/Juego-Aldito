@@ -42,4 +42,10 @@ public:
             cuerpoBola->GetPosition().y);
         return bola;
     }
+
+    void Mover(int fuerza){
+
+        cuerpoBola->ApplyForceToCenter(b2Vec2(-fuerza, 0.0f), true);
+
+    }
 };

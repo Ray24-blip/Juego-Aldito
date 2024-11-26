@@ -31,13 +31,8 @@ int main()
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            pe1->ApplyForceToCenter(b2Vec2(-fuerza, 0.0f), true);
+            pe1.Mover(fuerza);
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            pe1->ApplyForceToCenter(b2Vec2(fuerza, 0.0f), true);
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-            pe1->ApplyForceToCenter(b2Vec2(0.0f, -35), true);
 
         // Calcular simulacion fisica
         mundo.Step(1.0f / 60.0f, 6, 2);
