@@ -11,6 +11,7 @@ int main()
 {
 
     int fuerza = 2;
+    int salto= 30;
 
     b2Vec2 vectorGravedad(0.0f, 10.0f);
     b2World mundo(vectorGravedad);
@@ -31,7 +32,14 @@ int main()
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            pe1.Mover(fuerza);
+            pe1.Mover(-fuerza,salto-30);
+            
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            pe1.Mover(fuerza,salto-30);
+        
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            pe1.Mover(fuerza-2,-salto);
+
 
 
         // Calcular simulacion fisica

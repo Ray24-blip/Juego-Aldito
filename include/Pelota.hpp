@@ -43,9 +43,10 @@ public:
         return bola;
     }
 
-    void Mover(int fuerza){
+    void Mover(int fuerza,int salto){
 
-        cuerpoBola->ApplyForceToCenter(b2Vec2(-fuerza, 0.0f), true);
+        cuerpoBola->ApplyForceToCenter(b2Vec2(fuerza, salto), true);
+    
 
     }
 };
