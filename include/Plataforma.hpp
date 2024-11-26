@@ -30,6 +30,8 @@ public:
         fixtureSueloDef.shape = &formaSuelo;
         fixtureSueloDef.friction = 1.0f;
         this->cuerpoSuelo->CreateFixture(&fixtureSueloDef);
+
+
     }
     ~Plataforma() {}
 
