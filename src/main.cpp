@@ -19,6 +19,7 @@ int main()
 
     MyContactListener contactListener;
     mundo.SetContactListener(&contactListener);
+    sf::View vista(ventana.getDefaultView());
 
     Plataforma p1(mundo, 200, 500, 10, 600);
     Plataforma p2(mundo, 1000, 480, 10, 600);
@@ -53,6 +54,10 @@ int main()
         mundo.Step(1.0f / 60.0f, 6, 2);
         // cout << "Posicion de la bola: " << pe1.getPosition().x << ", " << pe1.getPosition().y << endl;
         // cout << "Posicion del sensor: " << se1.getPosition().x << ", " << se1.getPosition().y << endl;
+
+        b2Vec2 posicionCaja = ca1.ObtenerPosicion();
+        vista.setCenter(posicionCaja.x, posicionCaja.y);
+        ventana.setView(vista);
 
         ventana.clear();
 

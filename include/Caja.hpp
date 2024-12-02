@@ -52,7 +52,12 @@ public:
             cuerpoCaja->GetPosition().y);
         return caja;
     }
+    
 
+      b2Vec2 ObtenerPosicion()
+    {
+        return cuerpoCaja->GetPosition();
+    }
 
     void MoverDe(int fuerza)
     {
