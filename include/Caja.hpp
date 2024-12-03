@@ -33,7 +33,7 @@ public:
 
         // Crear el fixture sensor para los pies
         b2PolygonShape sensorShape;
-        sensorShape.SetAsBox(0.5f, 0.1f, b2Vec2(0.0f, -1.0f), 0.0f); // Sensor de 1x0.2 en los pies
+        sensorShape.SetAsBox(0.6f, 0.1f, b2Vec2(0.0f, -1.0f), 0.0f); // Sensor de 1x0.2 en los pies
 
         b2FixtureDef sensorFixtureDef;
         sensorFixtureDef.shape = &sensorShape;
@@ -46,7 +46,7 @@ public:
     sf::RectangleShape ObtenerFiguraPe()
     {
         sf::RectangleShape caja(sf::Vector2f(this->posx, this->posy));
-        caja.setOrigin(this->posx, this->posy);
+        caja.setOrigin(this->posx/2, this->posy);
         caja.setPosition(
             cuerpoCaja->GetPosition().x,
             cuerpoCaja->GetPosition().y);
