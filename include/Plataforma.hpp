@@ -9,15 +9,20 @@ private:
     float posx;
     float posy;
     b2Body *cuerpoSuelo;
-    
+    sf::Texture textura;
 
 public:
-    Plataforma(b2World &mundo, float posx, float posy, float alto, float ancho)
+    Plataforma(b2World &mundo, float posx, float posy, float alto, float ancho, const std::string &rutaTextura)
     {
         this->alto = alto;
         this->ancho = ancho;
         this->posx = posx;
         this->posy = posy;
+
+        if(!textura.loadFromFile(rutaTextura)){
+
+            std::cout<<"Error";
+        }
 
         b2BodyDef cuerpoSueloDef;
         cuerpoSueloDef.position.Set(this->posx, this->posy);
@@ -39,6 +44,7 @@ public:
     {
         sf::RectangleShape suelo(sf::Vector2f(this->ancho, this->alto));
         suelo.setOrigin(this->ancho / 2.0f, this->alto / 2.0f);
+        suelo.setTexture(&textura);
         suelo.setFillColor(sf::Color::Green);
         suelo.setPosition(
             cuerpoSuelo->GetPosition().x,

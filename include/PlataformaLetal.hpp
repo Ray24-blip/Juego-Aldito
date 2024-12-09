@@ -13,15 +13,22 @@ private:
     float posx;
     float posy;
     b2Body *cuerpoSuelo;
+    sf::Texture textura;
 
 public:
     // Constructor
-    PlataformaLetal(b2World &mundo, float posx, float posy, float alto, float ancho)
+    PlataformaLetal(b2World &mundo, float posx, float posy, float alto, float ancho, const std::string &rutaTextura)
     {
         this->alto = alto;
         this->ancho = ancho;
         this->posx = posx;
         this->posy = posy;
+
+        if (!textura.loadFromFile(rutaTextura))
+        {
+
+            std::cout << "Error";
+        }
 
         b2BodyDef cuerpoSueloDef;
         cuerpoSueloDef.position.Set(this->posx, this->posy);
@@ -44,7 +51,8 @@ public:
     {
         sf::RectangleShape suelo(sf::Vector2f(this->ancho, this->alto));
         suelo.setOrigin(this->ancho / 2.0f, this->alto / 2.0f);
-        suelo.setFillColor(sf::Color::Red); // Color rojo para la plataforma letal
+        suelo.setTexture(&textura);
+        // Color rojo para la plataforma letal
         suelo.setPosition(
             cuerpoSuelo->GetPosition().x,
             cuerpoSuelo->GetPosition().y);
@@ -52,14 +60,14 @@ public:
     }
 
     // Método para verificar si la pelota está tocando la plataforma letal
-    bool VerificarColision(b2Body* cuerpoBola)
+    bool VerificarColision(b2Body *cuerpoBola)
     {
-        for (b2ContactEdge* contacto = cuerpoBola->GetContactList(); contacto; contacto = contacto->next)
+        for (b2ContactEdge *contacto = cuerpoBola->GetContactList(); contacto; contacto = contacto->next)
         {
             if (contacto->contact)
             {
                 // Verificar si el cuerpo de la pelota está tocando la plataforma letal
-                b2Fixture* fixture = contacto->contact->GetFixtureA();
+                b2Fixture *fixture = contacto->contact->GetFixtureA();
                 if (fixture->GetBody() == cuerpoSuelo)
                 {
                     return true; // Si hay colisión, retornar true

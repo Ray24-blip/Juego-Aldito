@@ -9,6 +9,7 @@ private:
     float posy;
     b2Body *cuerpoBola;
     bool enContacto; // Variable para verificar si la pelota está tocando algo
+    sf::Texture textura;
 
 public:
     Pelota(b2World &mundo, float radio, float posx, float posy)
@@ -17,6 +18,13 @@ public:
         this->posx = posx;
         this->posy = posy;
         enContacto = false; // Inicialmente no está en contacto con nada
+
+
+
+        if(!textura.loadFromFile("./assets/images/noFilter.png")){
+
+            std::cout<<"Error";
+        }
 
         // Crear cuerpo de la bola
         b2BodyDef cuerpoBolaDef;
@@ -36,16 +44,24 @@ public:
 
     ~Pelota() {}
 
-    sf::CircleShape ObtenerFiguraPe()
-    {
-        sf::CircleShape bola(this->radio);
-        bola.setOrigin(this->radio, this->radio);
-        bola.setFillColor(sf::Color::Red);
-        bola.setPosition(
-            cuerpoBola->GetPosition().x,
-            cuerpoBola->GetPosition().y);
-        return bola;
-    }
+   sf::CircleShape ObtenerFiguraPe()
+{
+    sf::CircleShape bola(this->radio);
+    bola.setOrigin(this->radio, this->radio);
+    bola.setFillColor(sf::Color::Red);
+    bola.setTexture(&textura);
+
+    // Establecer la posición de la pelota en función del cuerpo físico
+    bola.setPosition(
+        cuerpoBola->GetPosition().x,
+        cuerpoBola->GetPosition().y);
+
+    // Ajustar la rotación de la figura para que coincida con la rotación del cuerpo físico
+    float angulo = cuerpoBola->GetAngle();  // Obtener el ángulo de rotación en radianes
+    bola.setRotation(angulo * 180 / 3.14159265359f);  // Convertir de radianes a grados
+
+    return bola;
+}
 
     b2Body* ObtenerCuerpo()
 {

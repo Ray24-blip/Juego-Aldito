@@ -35,10 +35,10 @@ int main()
 
         sf::View vista(ventana.getDefaultView());
 
-        Plataforma p1(mundo, 200, 500, 10, 600);
-        Plataforma p2(mundo, 1000, 480, 10, 600);
-        Plataforma p3(mundo, 1000, 350, 10, 300);
-        PlataformaLetal p4(mundo, 800, 400, 10, 60);
+        Plataforma p1(mundo, 200, 500, 10, 600,"./assets/images/grass_0.png");
+        Plataforma p2(mundo, 1000, 480, 10, 600,"./assets/images/grass_0.png");
+        Plataforma p3(mundo, 1000, 350, 10, 300,"./assets/images/grass_0.png");
+        PlataformaLetal p4(mundo, 800, 400, 10, 60,"./assets/images/Lava #4.png");
 
         Pelota pe1(mundo, 10, 200, 300);
 
