@@ -3,17 +3,50 @@
 
 class Usuario
 class Pelota{
-    +Saltar()
-    +Desplazar()
+    +saltar(salto)
+    +moverDe(fuerza)
+    +moverIzq(fuerza)
+    +obtenerFiguraPe()
+    +obtenerCuerpo()
+    +obtenerPosicion()
+    +detectarContacto()
 }
 class Juego{
 -Pelota pelotaRoja    
 }
 class Escenario
-class Plataforma
+class Plataforma{
+    +obtenerFigura()
 
-Juego *-- "1"Escenario
+}
+class PlataformaLetal{
+    +obtenerFigura()
+
+}
+class Fondo{
+    +actualizar(vista,ventana)
+    +dibujar(ventana)
+}
+class Musica{
+    +reproducir(volumen,enBucle)
+    +detener()
+}
+class SonidoSalto{
+    +reproducir()
+}
+class Colision{
+    +beginContact(contact)
+    +endContact(contact)
+}
+
+
+Juego o-- "1"Escenario
 Escenario *-- "1"Pelota
-Usuario o-- "1"Pelota
+Usuario --> "1"Pelota
 Escenario o-- "*"Plataforma
+Escenario o-- "*"PlataformaLetal
+Escenario o-- "1"Musica
+Pelota o-- SonidoSalto
+Pelota o-- Colision
+Escenario o-- "1"Fondo
 @enduml

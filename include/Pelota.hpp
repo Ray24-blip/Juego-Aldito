@@ -5,18 +5,18 @@ class Pelota
 {
 private:
     float radio;
-    float posx;
-    float posy;
+    float posX;
+    float posY;
     b2Body *cuerpoBola;
     bool enContacto; // Variable para verificar si la pelota está tocando algo
     sf::Texture textura;
 
 public:
-    Pelota(b2World &mundo, float radio, float posx, float posy)
+    Pelota(b2World &mundo, float radio, float posX, float posY)
     {
         this->radio = radio;
-        this->posx = posx;
-        this->posy = posy;
+        this->posX = posX;
+        this->posY = posY;
         enContacto = false; // Inicialmente no está en contacto con nada
 
 
@@ -29,7 +29,7 @@ public:
         // Crear cuerpo de la bola
         b2BodyDef cuerpoBolaDef;
         cuerpoBolaDef.type = b2_dynamicBody;
-        cuerpoBolaDef.position.Set(this->posx, this->posy);
+        cuerpoBolaDef.position.Set(this->posX, this->posY);
         this->cuerpoBola = mundo.CreateBody(&cuerpoBolaDef);
 
         // Crear la forma de la bola
@@ -44,7 +44,7 @@ public:
 
     ~Pelota() {}
 
-   sf::CircleShape ObtenerFiguraPe()
+   sf::CircleShape obtenerFiguraPe()
 {
     sf::CircleShape bola(this->radio);
     bola.setOrigin(this->radio, this->radio);
@@ -63,30 +63,30 @@ public:
     return bola;
 }
 
-    b2Body* ObtenerCuerpo()
+    b2Body* obtenerCuerpo()
 {
     return cuerpoBola;
 }
 
-    b2Vec2 ObtenerPosicion()
+    b2Vec2 obtenerPosicion()
     {
         return cuerpoBola->GetPosition();
     }
 
     // Método para mover la pelota hacia la derecha
-    void MoverDe(int fuerza)
+    void moverDe(int fuerza)
     {
         cuerpoBola->ApplyForceToCenter(b2Vec2(-fuerza, 0.0f), true);
     }
 
     // Método para mover la pelota hacia la izquierda
-    void MoverIzq(int fuerza)
+    void moverIzq(int fuerza)
     {
         cuerpoBola->ApplyForceToCenter(b2Vec2(fuerza, 0.0f), true);
     }
 
     // Método para detectar si la pelota está en contacto con algo
-    void DetectarContacto()
+    void detectarContacto()
     {
         enContacto = false; // Reseteamos el estado de contacto
 
@@ -102,9 +102,9 @@ public:
     }
 
     // Método para hacer saltar la pelota solo si está en contacto con algo
-    void Saltar(int salto)
+    void saltar(int salto)
     {
-        DetectarContacto(); // Detectamos si está en contacto con algo
+        detectarContacto(); // Detectamos si está en contacto con algo
         if (enContacto)
         {
             cuerpoBola->ApplyForceToCenter(b2Vec2(0.0f, -salto), true); // Si está en contacto, la pelota salta

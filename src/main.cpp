@@ -5,9 +5,9 @@
 #include <Pelota.hpp>
 #include <Colision.hpp>
 #include <PlataformaLetal.hpp>
-#include "Fondo.hpp" // Incluir la clase Fondo
-#include "Musica.hpp" // Incluir la clase MusicaFondo
-#include "SonidoSalto.hpp" // Incluir la clase SonidoSalto
+#include <Fondo.hpp> 
+#include <Musica.hpp> 
+#include <SonidoSalto.hpp> 
 
 using namespace std;
 
@@ -52,23 +52,23 @@ int main()
             }
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-                pe1.MoverDe(fuerza);
+                pe1.moverDe(fuerza);
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-                pe1.MoverIzq(fuerza);
+                pe1.moverIzq(fuerza);
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
-                pe1.Saltar(salto);
+                pe1.saltar(salto);
                 sonidoSalto.reproducir();  // Reproducir el sonido de salto
             }
 
             // Calcular simulación física
             mundo.Step(1.0f / 60.0f, 6, 2);
-            cout << "Posición de la bola: " << pe1.ObtenerPosicion().x << ", " << pe1.ObtenerPosicion().y << endl;
+            cout << "Posición de la bola: " << pe1.obtenerPosicion().x << ", " << pe1.obtenerPosicion().y << endl;
 
-            b2Vec2 posicionPelota = pe1.ObtenerPosicion();
-            if (p4.VerificarColision(pe1.ObtenerCuerpo()))
+            b2Vec2 posicionPelota = pe1.obtenerPosicion();
+            if (p4.VerificarColision(pe1.obtenerCuerpo()))
             {
                 std::cout << "¡La pelota ha tocado la plataforma letal! El juego termina." << std::endl;
                 ventana.close(); // Terminar el juego
@@ -87,11 +87,11 @@ int main()
             fondo.dibujar(ventana);
 
             // Dibujar los objetos del juego
-            ventana.draw(p1.ObtenerFigura());
-            ventana.draw(p2.ObtenerFigura());
-            ventana.draw(p3.ObtenerFigura());
-            ventana.draw(p4.ObtenerFigura());
-            ventana.draw(pe1.ObtenerFiguraPe());
+            ventana.draw(p1.obtenerFigura());
+            ventana.draw(p2.obtenerFigura());
+            ventana.draw(p3.obtenerFigura());
+            ventana.draw(p4.obtenerFigura());
+            ventana.draw(pe1.obtenerFiguraPe());
 
             ventana.display();
         }

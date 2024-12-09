@@ -6,7 +6,7 @@ class MyContactListener : public b2ContactListener {
 public:
     bool isGrounded = false; // Indica si la bola está en contacto con el suelo
 
-    void BeginContact(b2Contact* contact) override {
+    void beginContact(b2Contact* contact) override {
         b2Fixture* fixtureA = contact->GetFixtureA();
         b2Fixture* fixtureB = contact->GetFixtureB();
 
@@ -17,7 +17,7 @@ public:
         }
     }
 
-    void EndContact(b2Contact* contact) override {
+    void endContact(b2Contact* contact) override {
         b2Fixture* fixtureA = contact->GetFixtureA();
         b2Fixture* fixtureB = contact->GetFixtureB();
 

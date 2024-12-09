@@ -10,19 +10,19 @@ class PlataformaLetal
 private:
     float alto;
     float ancho;
-    float posx;
-    float posy;
+    float posX;
+    float posY;
     b2Body *cuerpoSuelo;
     sf::Texture textura;
 
 public:
     // Constructor
-    PlataformaLetal(b2World &mundo, float posx, float posy, float alto, float ancho, const std::string &rutaTextura)
+    PlataformaLetal(b2World &mundo, float posX, float posY, float alto, float ancho, const std::string &rutaTextura)
     {
         this->alto = alto;
         this->ancho = ancho;
-        this->posx = posx;
-        this->posy = posy;
+        this->posX = posX;
+        this->posY = posY;
 
         if (!textura.loadFromFile(rutaTextura))
         {
@@ -31,7 +31,7 @@ public:
         }
 
         b2BodyDef cuerpoSueloDef;
-        cuerpoSueloDef.position.Set(this->posx, this->posy);
+        cuerpoSueloDef.position.Set(this->posX, this->posY);
         this->cuerpoSuelo = mundo.CreateBody(&cuerpoSueloDef);
 
         b2PolygonShape formaSuelo;
@@ -47,7 +47,7 @@ public:
     ~PlataformaLetal() {}
 
     // Método para obtener la representación gráfica de la plataforma
-    sf::RectangleShape ObtenerFigura()
+    sf::RectangleShape obtenerFigura()
     {
         sf::RectangleShape suelo(sf::Vector2f(this->ancho, this->alto));
         suelo.setOrigin(this->ancho / 2.0f, this->alto / 2.0f);
