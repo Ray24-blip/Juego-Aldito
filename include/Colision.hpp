@@ -4,24 +4,22 @@
 
 class MyContactListener : public b2ContactListener {
 public:
-    bool isGrounded = false; // Indica si la bola está en contacto con el suelo
+    bool isGrounded = false; 
 
-    void beginContact(b2Contact* contact) override {
+    void BeginContact(b2Contact* contact) override {
         b2Fixture* fixtureA = contact->GetFixtureA();
         b2Fixture* fixtureB = contact->GetFixtureB();
 
-        // Verificar si uno de los fixtures es el sensor
         if (fixtureA->IsSensor() || fixtureB->IsSensor()) {
             isGrounded = true;
             std::cout << "Sensor detecto contacto con el suelo." << std::endl;
         }
     }
 
-    void endContact(b2Contact* contact) override {
+    void EndContact(b2Contact* contact) override {
         b2Fixture* fixtureA = contact->GetFixtureA();
         b2Fixture* fixtureB = contact->GetFixtureB();
 
-        // Verificar si uno de los fixtures es el sensor
         if (fixtureA->IsSensor() || fixtureB->IsSensor()) {
             isGrounded = false;
             std::cout << "Sensor dejo de detectar el suelo." << std::endl;

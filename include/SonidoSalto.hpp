@@ -7,7 +7,7 @@
 class SonidoSalto
 {
 public:
-    // Constructor que carga el archivo de sonido
+
     SonidoSalto(const std::string& archivo)
     {
         if (!bufferSalto.loadFromFile(archivo)) {
@@ -17,7 +17,7 @@ public:
         sonidoSalto.setBuffer(bufferSalto);
     }
 
-    // Método para reproducir el sonido de salto
+
     void reproducir()
     {
         sonidoSalto.play();
@@ -28,4 +28,4 @@ private:
     sf::Sound sonidoSalto;
 };
 
-#endif // SONIDOSALTO_HPP
+#endif 
