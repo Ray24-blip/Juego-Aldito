@@ -103,10 +103,10 @@ public:
 
     void saltar(int salto)
     {
-        detectarContacto(); go
+        detectarContacto();
         if (enContacto)
         {
-            cuerpoBola->ApplyForceToCenter(b2Vec2(0.0f, -salto), true); 
+            cuerpoBola->ApplyForceToCenter(b2Vec2(0.0f, -salto), true);
         }
     }
 };

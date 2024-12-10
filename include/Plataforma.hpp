@@ -40,12 +40,12 @@ public:
     }
     ~Plataforma() {}
 
-    sf::RectangleShape obtenerFigura()
+    sf::RectangleShape obtenerFigura(sf::Color color)
     {
         sf::RectangleShape suelo(sf::Vector2f(this->ancho, this->alto));
         suelo.setOrigin(this->ancho / 2.0f, this->alto / 2.0f);
         suelo.setTexture(&textura);
-        suelo.setFillColor(sf::Color::Green);
+        suelo.setFillColor(color);
         suelo.setPosition(
             cuerpoSuelo->GetPosition().x,
             cuerpoSuelo->GetPosition().y);
