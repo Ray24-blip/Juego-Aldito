@@ -77,7 +77,7 @@ int main()
             if (pl1.VerificarColision(pe1.obtenerCuerpo())|| pl2.VerificarColision(pe1.obtenerCuerpo()) || posicionPelota.y > 800)
             {
                 std::cout << "¡La pelota ha tocado la plataforma letal! El juego termina." << std::endl;
-                pe1. // Terminar el juego
+                pe1.resetPosition(); // Terminar el juego
             }
 
             vista.setCenter(posicionPelota.x, posicionPelota.y);

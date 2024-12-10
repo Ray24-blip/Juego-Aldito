@@ -10,14 +10,16 @@ private:
     b2Body *cuerpoBola;
     bool enContacto; 
     sf::Texture textura;
-
+    b2Vec2 posicionInicial;
 public:
-    Pelota(b2World &mundo, float radio, float posX, float posY)
+    Pelota(b2World &mundo, float radio, float posX, float posY) : posicionInicial(posX,posY)
     {
         this->radio = radio;
         this->posX = posX;
         this->posY = posY;
         enContacto = false; 
+
+        
 
         if (!textura.loadFromFile("./assets/images/noFilter.png"))
         {
@@ -72,6 +74,11 @@ public:
         return cuerpoBola->GetPosition();
     }
 
+        void resetPosition() {
+        cuerpoBola->SetTransform(posicionInicial, 0.0f); // Restablecer posición y rotación
+        cuerpoBola->SetLinearVelocity(b2Vec2(0.0f, 0.0f)); // Eliminar velocidad lineal
+        cuerpoBola->SetAngularVelocity(0.0f);             // Eliminar velocidad angular
+    }
 
     void moverDe(int fuerza)
     {
