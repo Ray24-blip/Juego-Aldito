@@ -67,7 +67,7 @@ pacman -S mingw-w64-x86_64-box2d
 
 ## Diagrama
 
-![Pantalla del juego]()
+![Diagrama](https://github.com/Ray24-blip/Juego-Aldito/blob/main/assets/screenshots/diagrama.png?raw=true)
 
 ## Assets utilizados
 
