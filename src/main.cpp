@@ -44,10 +44,18 @@ int main()
         Plataforma p4(mundo, 2000, 400, 10, 200, "./assets/images/grass_0.png");
         Plataforma p5(mundo, 2450, 400, 10, 200, "./assets/images/grass_0.png");
         Plataforma p6(mundo, 3100, 400, 10, 500, "./assets/images/grass_0.png");
-        // Plataforma p7(mundo, 1000, 350, 10, 300,"./assets/images/grass_0.png");
+        Plataforma p7(mundo, 3600, 320, 10, 120, "./assets/images/YellowPlastic_d.png");
+        Plataforma p8(mundo, 3900, 240, 10, 120, "./assets/images/YellowPlastic_d.png");
+        Plataforma p9(mundo, 4200, 180, 10, 120, "./assets/images/YellowPlastic_d.png");
+        Plataforma p10(mundo, 4500, 100, 10, 120, "./assets/images/YellowPlastic_d.png");
+        Plataforma p11(mundo, 4800, 20, 200, 10, "./assets/images/tex_Ice.png");
+        Plataforma p12(mundo, 4800, -1000, 10, 200, "./assets/images/YellowPlastic_d.png");
+        Plataforma p13(mundo, 5100, -700, 10, 500, "./assets/images/grass_0.png");
+        Plataforma p14(mundo, 5700, -700, 10, 300, "./assets/images/YellowPlastic_d.png");
 
         PlataformaLetal pl1(mundo, 2700, 320, 80, 10, "./assets/images/Lava #4.png");
         PlataformaLetal pl2(mundo, 2700, 170, 80, 10, "./assets/images/Lava #4.png");
+        PlataformaLetal pl3(mundo, 4200, 400, 10, 1200, "./assets/images/Lava #4.png");
 
         Pelota pe1(mundo, 10, 200, 300);
 
@@ -77,12 +85,12 @@ int main()
             cout << "Posición de la bola: " << pe1.obtenerPosicion().x << ", " << pe1.obtenerPosicion().y << endl;
 
             b2Vec2 posicionPelota = pe1.obtenerPosicion();
-            if (pl1.VerificarColision(pe1.obtenerCuerpo()) || pl2.VerificarColision(pe1.obtenerCuerpo()) || posicionPelota.y > 800)
+            if (pl1.VerificarColision(pe1.obtenerCuerpo()) || pl2.VerificarColision(pe1.obtenerCuerpo()) || pl3.VerificarColision(pe1.obtenerCuerpo()) || posicionPelota.y > 800)
             {
                 pe1.resetPosition();
             }
 
-            if (posicionPelota.x >= 3000.0f)
+            if (posicionPelota.x >= 5670.0f)
             {
                 cronometro.pausar();
                 float tiempoFinal = cronometro.obtenerTiempoFinal();
@@ -108,8 +116,17 @@ int main()
             ventana.draw(p4.obtenerFigura(sf::Color::Green));
             ventana.draw(p5.obtenerFigura(sf::Color::Green));
             ventana.draw(p6.obtenerFigura(sf::Color::Green));
+            ventana.draw(p7.obtenerFigura(sf::Color::Black));
+            ventana.draw(p8.obtenerFigura(sf::Color::Black));
+            ventana.draw(p9.obtenerFigura(sf::Color::Black));
+            ventana.draw(p10.obtenerFigura(sf::Color::Black));
+            ventana.draw(p11.obtenerFigura(sf::Color::Blue));
+            ventana.draw(p12.obtenerFigura(sf::Color::Black));
+            ventana.draw(p13.obtenerFigura(sf::Color::Green));
+            ventana.draw(p14.obtenerFigura(sf::Color::Yellow));
             ventana.draw(pl1.obtenerFigura());
             ventana.draw(pl2.obtenerFigura());
+            ventana.draw(pl3.obtenerFigura());
             ventana.draw(pe1.obtenerFiguraPe());
             cronometro.dibujar(ventana);
             ventana.display();
