@@ -9,6 +9,18 @@ Instalar todas las dependencias descritas abajo y dentro de una terminal de vsco
 
 > make runmain
 
+## Controles
+
+Movimiento derecha "->"
+Movimiento izquierda "<-"
+Salto "space"
+
+## Objetivo
+
+Llegar a la plataforma amarilla lo mas rapido posible!
+
+# Requerimientos para compilar el programa
+
 ### Visual studio code
 Descargar e instalar vscode en el siguiente [Enlace.](https://code.visualstudio.com/)
 
