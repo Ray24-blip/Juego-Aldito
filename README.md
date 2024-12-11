@@ -12,7 +12,9 @@ Instalar todas las dependencias descritas abajo y dentro de una terminal de vsco
 ## Controles
 
 Movimiento derecha "->"
+
 Movimiento izquierda "<-"
+
 Salto "space"
 
 ## Objetivo
@@ -20,6 +22,10 @@ Salto "space"
 Llegar a la plataforma amarilla lo mas rapido posible!
 
 ## Imagenes del juego
+
+![Pantalla del juego](https://raw.githubusercontent.com/Ray24-blip/Juego-Aldito/main/assets/screenshots/Redball!%201.png)
+
+![Pantalla del juego](https://raw.githubusercontent.com/Ray24-blip/Juego-Aldito/main/assets/screenshots/Redball!%202.png)
 
 ![Pantalla del juego](https://raw.githubusercontent.com/Ray24-blip/Juego-Aldito/main/assets/screenshots/Redball!%203.png)
 
@@ -58,6 +64,10 @@ https://packages.msys2.org/package/mingw-w64-x86_64-sfml
 https://box2d.org/documentation/
 https://packages.msys2.org/package/mingw-w64-x86_64-box2d?repo=mingw64
 pacman -S mingw-w64-x86_64-box2d
+
+## Diagrama
+
+![Pantalla del juego]()
 
 ## Assets utilizados
 
