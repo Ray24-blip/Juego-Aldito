@@ -19,6 +19,12 @@ Salto "space"
 
 Llegar a la plataforma amarilla lo mas rapido posible!
 
+## Imagenes del juego
+
+!(https://github.com/Ray24-blip/Juego-Aldito/blob/main/assets/screenshots/Redball!%201.png)
+!(https://github.com/Ray24-blip/Juego-Aldito/blob/main/assets/screenshots/Redball!%202.png)
+!(https://github.com/Ray24-blip/Juego-Aldito/blob/main/assets/screenshots/Redball!%203.png)
+
 # Requerimientos para compilar el programa
 
 ### Visual studio code
@@ -83,3 +89,4 @@ https://www.dafont.com/es/ds-digital.font
 
 ### RedBall por Evgeniy "Eugene" Fedoseev
 https://www.numuki.com/game/red-ball-1/
+
