@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
 #include <iostream>
-#include <Plataforma.hpp>
+#include <PlataformaNormal.hpp>
 #include <Pelota.hpp>
 #include <Colision.hpp>
 #include <PlataformaLetal.hpp>
@@ -18,19 +18,16 @@ int main()
 {
     try
     {
-        // Crear música de fondo
-        Musica musica("./assets/music/music.ogg"); // Cambia "musica.ogg" por tu archivo de audio
-        musica.reproducir(20.0f, true);            // Reproducir con volumen al 20% y en bucle
+        Musica musica("./assets/music/music.ogg");
+        musica.reproducir(15.0f, true);
 
-        // Crear objeto SonidoSalto
-        SonidoSalto sonidoSalto("./assets/sounds/slime_jump.wav"); // Cargar sonido de salto
+        SonidoSalto sonidoSalto("./assets/sounds/slime_jump.wav");
 
         int fuerza = 1;
         int salto = 500;
         b2Vec2 vectorGravedad(0.0f, 1.0f);
         b2World mundo(vectorGravedad);
 
-        // Crear fondo (ajusta el tamaño del mundo según tu diseño)
         const int anchoMundo = 5000;
         const int altoMundo = 5000;
         Fondo fondo("./assets/images/FondoCielo.png", anchoMundo, altoMundo);
@@ -38,20 +35,20 @@ int main()
         sf::View vista(ventana.getDefaultView());
 
         Cronometro cronometro(30, "./assets/fonts/DS-DIGI.ttf");
-        Plataforma p1(mundo, 220, 500, 10, 400, "./assets/images/grass_0.png");
-        Plataforma p2(mundo, 1000, 480, 10, 600, "./assets/images/grass_0.png");
-        Plataforma p3(mundo, 1550, 400, 10, 200, "./assets/images/grass_0.png");
-        Plataforma p4(mundo, 2000, 400, 10, 200, "./assets/images/grass_0.png");
-        Plataforma p5(mundo, 2450, 400, 10, 200, "./assets/images/grass_0.png");
-        Plataforma p6(mundo, 3100, 400, 10, 500, "./assets/images/grass_0.png");
-        Plataforma p7(mundo, 3600, 320, 10, 120, "./assets/images/YellowPlastic_d.png");
-        Plataforma p8(mundo, 3900, 240, 10, 120, "./assets/images/YellowPlastic_d.png");
-        Plataforma p9(mundo, 4200, 180, 10, 120, "./assets/images/YellowPlastic_d.png");
-        Plataforma p10(mundo, 4500, 100, 10, 120, "./assets/images/YellowPlastic_d.png");
-        Plataforma p11(mundo, 4800, 20, 200, 10, "./assets/images/tex_Ice.png");
-        Plataforma p12(mundo, 4800, -1000, 10, 200, "./assets/images/YellowPlastic_d.png");
-        Plataforma p13(mundo, 5100, -700, 10, 500, "./assets/images/grass_0.png");
-        Plataforma p14(mundo, 5700, -700, 10, 300, "./assets/images/YellowPlastic_d.png");
+        PlataformaNormal p1(mundo, 220, 500, 10, 400, "./assets/images/grass_0.png");
+        PlataformaNormal p2(mundo, 1000, 480, 10, 600, "./assets/images/grass_0.png");
+        PlataformaNormal p3(mundo, 1550, 400, 10, 200, "./assets/images/grass_0.png");
+        PlataformaNormal p4(mundo, 2000, 400, 10, 200, "./assets/images/grass_0.png");
+        PlataformaNormal p5(mundo, 2450, 400, 10, 200, "./assets/images/grass_0.png");
+        PlataformaNormal p6(mundo, 3100, 400, 10, 500, "./assets/images/grass_0.png");
+        PlataformaNormal p7(mundo, 3600, 320, 10, 120, "./assets/images/YellowPlastic_d.png");
+        PlataformaNormal p8(mundo, 3900, 240, 10, 120, "./assets/images/YellowPlastic_d.png");
+        PlataformaNormal p9(mundo, 4200, 180, 10, 120, "./assets/images/YellowPlastic_d.png");
+        PlataformaNormal p10(mundo, 4500, 100, 10, 120, "./assets/images/YellowPlastic_d.png");
+        PlataformaNormal p11(mundo, 4800, 20, 200, 10, "./assets/images/tex_Ice.png");
+        PlataformaNormal p12(mundo, 4800, -1000, 10, 200, "./assets/images/YellowPlastic_d.png");
+        PlataformaNormal p13(mundo, 5100, -700, 10, 500, "./assets/images/grass_0.png");
+        PlataformaNormal p14(mundo, 5700, -700, 10, 300, "./assets/images/YellowPlastic_d.png");
 
         PlataformaLetal pl1(mundo, 2700, 320, 80, 10, "./assets/images/Lava #4.png");
         PlataformaLetal pl2(mundo, 2700, 170, 80, 10, "./assets/images/Lava #4.png");
@@ -77,10 +74,9 @@ int main()
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
                 pe1.saltar(salto);
-                sonidoSalto.reproducir(); // Reproducir el sonido de salto
+                sonidoSalto.reproducir();
             }
 
-            // Calcular simulación física
             mundo.Step(1.0f / 60.0f, 6, 2);
             cout << "Posición de la bola: " << pe1.obtenerPosicion().x << ", " << pe1.obtenerPosicion().y << endl;
 
@@ -104,12 +100,10 @@ int main()
 
             ventana.clear();
 
-            // Dibujar el fondo
             fondo.actualizar(vista, ventana);
             fondo.dibujar(ventana);
             cronometro.ajustarPosicion(vista);
 
-            // Dibujar los objetos del juego
             ventana.draw(p1.obtenerFigura(sf::Color::Green));
             ventana.draw(p2.obtenerFigura(sf::Color::Green));
             ventana.draw(p3.obtenerFigura(sf::Color::Green));

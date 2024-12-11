@@ -8,18 +8,17 @@ private:
     float posX;
     float posY;
     b2Body *cuerpoBola;
-    bool enContacto; 
+    bool enContacto;
     sf::Texture textura;
     b2Vec2 posicionInicial;
+
 public:
-    Pelota(b2World &mundo, float radio, float posX, float posY) : posicionInicial(posX,posY)
+    Pelota(b2World &mundo, float radio, float posX, float posY) : posicionInicial(posX, posY)
     {
         this->radio = radio;
         this->posX = posX;
         this->posY = posY;
-        enContacto = false; 
-
-        
+        enContacto = false;
 
         if (!textura.loadFromFile("./assets/images/noFilter.png"))
         {
@@ -27,12 +26,10 @@ public:
             std::cout << "Error";
         }
 
-
         b2BodyDef cuerpoBolaDef;
         cuerpoBolaDef.type = b2_dynamicBody;
         cuerpoBolaDef.position.Set(this->posX, this->posY);
         this->cuerpoBola = mundo.CreateBody(&cuerpoBolaDef);
-
 
         b2CircleShape formaBola;
         formaBola.m_radius = radio;
@@ -52,14 +49,12 @@ public:
         bola.setFillColor(sf::Color::Red);
         bola.setTexture(&textura);
 
-
         bola.setPosition(
             cuerpoBola->GetPosition().x,
             cuerpoBola->GetPosition().y);
 
-     
-        float angulo = cuerpoBola->GetAngle(); 
-        bola.setRotation(angulo * 180 / 3.14159265359f); 
+        float angulo = cuerpoBola->GetAngle();
+        bola.setRotation(angulo * 180 / 3.14159265359f);
 
         return bola;
     }
@@ -74,10 +69,11 @@ public:
         return cuerpoBola->GetPosition();
     }
 
-        void resetPosition() {
-        cuerpoBola->SetTransform(posicionInicial, 0.0f); // Restablecer posición y rotación
+    void resetPosition()
+    {
+        cuerpoBola->SetTransform(posicionInicial, 0.0f);   // Restablecer posición y rotación
         cuerpoBola->SetLinearVelocity(b2Vec2(0.0f, 0.0f)); // Eliminar velocidad lineal
-        cuerpoBola->SetAngularVelocity(0.0f);             // Eliminar velocidad angular
+        cuerpoBola->SetAngularVelocity(0.0f);              // Eliminar velocidad angular
     }
 
     void moverDe(int fuerza)
@@ -85,28 +81,24 @@ public:
         cuerpoBola->ApplyForceToCenter(b2Vec2(-fuerza, 0.0f), true);
     }
 
-
     void moverIzq(int fuerza)
     {
         cuerpoBola->ApplyForceToCenter(b2Vec2(fuerza, 0.0f), true);
     }
 
-
     void detectarContacto()
     {
-        enContacto = false; 
-
+        enContacto = false;
 
         for (b2ContactEdge *contacto = cuerpoBola->GetContactList(); contacto; contacto = contacto->next)
         {
             if (contacto->contact)
             {
-                enContacto = true; 
-                break;             
+                enContacto = true;
+                break;
             }
         }
     }
-
 
     void saltar(int salto)
     {

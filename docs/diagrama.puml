@@ -2,6 +2,15 @@
 
 
 class Usuario
+class Cronometro{
+    +reiniciar()
+    +pausar()
+    +reanudar()
+    +actualizar()
+    +ajustarPosicion(vista)
+    +dibujar(ventana)
+    +obtenerTiempoFinal()
+}
 class Pelota{
     +saltar(salto)
     +moverDe(fuerza)
@@ -15,7 +24,8 @@ class Juego{
 -Pelota pelotaRoja    
 }
 class Escenario
-class Plataforma{
+class Plataforma
+class PlataformaNormal{
     +obtenerFigura()
 
 }
@@ -43,8 +53,10 @@ class Colision{
 Juego o-- "1"Escenario
 Escenario *-- "1"Pelota
 Usuario --> "1"Pelota
-Escenario o-- "*"Plataforma
-Escenario o-- "*"PlataformaLetal
+PlataformaNormal -->Plataforma
+PlataformaLetal -->Plataforma
+Escenario o-- "1"Cronometro
+Escenario o-- "17"Plataforma
 Escenario o-- "1"Musica
 Pelota o-- SonidoSalto
 Pelota o-- Colision

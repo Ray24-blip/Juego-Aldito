@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
 
-class Plataforma
+class PlataformaNormal
 {
 private:
     float alto;
@@ -12,16 +12,17 @@ private:
     sf::Texture textura;
 
 public:
-    Plataforma(b2World &mundo, float posX, float posY, float alto, float ancho, const std::string &rutaTextura)
+    PlataformaNormal(b2World &mundo, float posX, float posY, float alto, float ancho, const std::string &rutaTextura)
     {
         this->alto = alto;
         this->ancho = ancho;
         this->posX = posX;
         this->posY = posY;
 
-        if(!textura.loadFromFile(rutaTextura)){
+        if (!textura.loadFromFile(rutaTextura))
+        {
 
-            std::cout<<"Error";
+            std::cout << "Error";
         }
 
         b2BodyDef cuerpoSueloDef;
@@ -35,10 +36,8 @@ public:
         fixtureSueloDef.shape = &formaSuelo;
         fixtureSueloDef.friction = 1.0f;
         this->cuerpoSuelo->CreateFixture(&fixtureSueloDef);
-
-
     }
-    ~Plataforma() {}
+    ~PlataformaNormal() {}
 
     sf::RectangleShape obtenerFigura(sf::Color color)
     {
